@@ -35,10 +35,16 @@ NODE JS + FASTIFY + TYPESCRIPT
 ### Install
 
 Creating a Backend Project with Node.js <br />
-`npm init -y` <br /><br />
+`npm init -y` <br />
 
 Running the backend on port 3001<br />
-`npm run dev`<br /><br />
+`npm run dev`<br />
+
+Install Typescript for Development<br />
+`npm i -D typescript`<br />
+
+Setting Up TypeScript<br />
+`npx tsc --init`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
