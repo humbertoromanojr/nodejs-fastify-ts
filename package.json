@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-fastify-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humbertoromanojr/nodejs-fastify-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/humbertoromanojr/nodejs-fastify-ts/issues"
+  },
+  "homepage": "https://github.com/humbertoromanojr/nodejs-fastify-ts#readme"
+}
