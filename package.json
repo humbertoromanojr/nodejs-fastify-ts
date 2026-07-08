@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/humbertoromanojr/nodejs-fastify-ts/issues"
   },
-  "homepage": "https://github.com/humbertoromanojr/nodejs-fastify-ts#readme"
+  "homepage": "https://github.com/humbertoromanojr/nodejs-fastify-ts#readme",
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
 }
