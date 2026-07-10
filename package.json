@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "knex": "npx tsx --no-warnings node_modules/knex/bin/cli.js",
     "lint": "eslint src --ext .ts --fix"
   },
   "repository": {
@@ -28,6 +29,7 @@
     "typescript-eslint": "^8.63.0"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "fastify": "^5.10.0",
     "knex": "^3.3.0",
     "sqlite3": "^6.0.1"
