@@ -6,7 +6,7 @@ NODE JS + FASTIFY + TYPESCRIPT
 
 </h1>
 
-> Status from Project: <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" /> F I N I S H E D <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" />
+> Status from Project: <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" /> Under Construction <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" />
 
 ## Shields
 
@@ -26,6 +26,8 @@ NODE JS + FASTIFY + TYPESCRIPT
 - [Node JS](https://nodejs.org/en/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Fastify](https://fastify.dev/)
+- [SqLite](https://sqlite.org/docs.html)
+- [Knex](https://knexjs.org/guide/)
 
 <div align="center">
   <img src="https://drive.google.com/uc?export=view&id=" alt="" width="100%" border="0" />
@@ -42,9 +44,20 @@ Running the backend on port 3001<br />
 
 Install Typescript for Development<br />
 `npm i -D typescript`<br />
+`npm i -D @types/node`<br />
+`npm i -D tsx`<br />
 
 Setting Up TypeScript<br />
-`npx tsc --init`<br /><br />
+`npx tsc --init`<br />
+
+Install Fastify<br />
+`npm i fastify`<br />
+
+Install Eslint<br />
+`npm i -D eslint`<br />
+
+Install SQLite and Knex<br />
+`npm install knex sqlite3 --legacy-peer-deps`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
