@@ -115,6 +115,7 @@ dist
 
 # DynamoDB Local files
 .dynamodb/
+tmp/app.db
 
 # Firebase cache directory
 .firebase/
