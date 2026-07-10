@@ -1,9 +1,14 @@
 import knex from "knex";
+import path from "path";
+import { fileURLToPath } from "url";
 
-export const db = knex({
-  client: "sqlite3",
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export const config = {
+  client: "sqlite",
   connection: {
-    filename: "./tmp/app.db",
+    filename: path.resolve(__dirname, "..", "tmp", "app.db"),
   },
   useNullAsDefault: true,
   pool: {
@@ -11,4 +16,10 @@ export const db = knex({
       conn.run("PRAGMA foreign_keys = ON", cb);
     },
   },
-});
+  migrations: {
+    directory: path.resolve(__dirname, "..", "migrations"),
+    extension: "ts",
+  },
+};
+
+export const db = knex(config);
