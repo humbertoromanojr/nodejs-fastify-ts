@@ -47,8 +47,6 @@
 
 > NFR: Non-Functional Requirements
 
-Translated with DeepL.com (free version)
-
 <div align="center">
   <img src="https://drive.google.com/uc?export=view&id=" alt="" width="100%" border="0" />
 </div>
