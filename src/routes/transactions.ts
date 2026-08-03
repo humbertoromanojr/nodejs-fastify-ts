@@ -5,7 +5,7 @@ import { z } from "zod";
 import { db as knex } from "../database.js";
 
 export async function transactionsRoutes(app: FastifyInstance) {
-  app.get("/", async (request, replay) => {
+  app.post("/", async (request, replay) => {
     const createTransactionBodySchema = z.object({
       title: z.string(),
       amount: z.number(),
@@ -20,7 +20,6 @@ export async function transactionsRoutes(app: FastifyInstance) {
       id: randomUUID(),
       title,
       amount: type === "credit" ? amount : -amount,
-      created_at: new Date(),
     });
 
     return replay.status(201).send();
