@@ -2,7 +2,7 @@
   <img src="https://drive.google.com/uc?export=view&id=108wZswANlNm0X2WKjVdVLMgNvcxlNjzr" alt="" width="100%" border="0" />
 <br>
 
-NODE JS + FASTIFY + TYPESCRIPT
+# NODE JS + FASTIFY + TYPESCRIPT
 
 </h1>
 
@@ -31,12 +31,30 @@ NODE JS + FASTIFY + TYPESCRIPT
 - [Dotenv](https://github.com/motdotla/dotenv)
 - [Zod](https://zod.dev)
 
+## Backend Development Process: 🎖️
+
+> RF: Functional Requirements 👊
+
+- [] The user must be able to create a new transaction;
+- [] The user must be able to view a summary of their account;
+- [] The user must be able to list all transactions that have already occurred;
+
+> BR: Business Rules ⛑️
+
+- [] A transaction can be a credit transaction that adds to the total amount, or a debit transaction that subtracts from it;
+- [] It must be possible to identify the user across requests;
+- [] The user can only view transactions that they have created;
+
+> NFR: Non-Functional Requirements
+
+Translated with DeepL.com (free version)
+
 <div align="center">
   <img src="https://drive.google.com/uc?export=view&id=" alt="" width="100%" border="0" />
 </div>
 <br />
 
-### Install
+## Install
 
 Creating a Backend Project with Node.js <br />
 `npm init -y` <br />
@@ -68,7 +86,10 @@ Run Migrations<br />
 `npm run knex -- migrate:latest --knexfile knexfile.ts`<br />
 
 Undo Migrations<br />
-`npm run knex -- migrate:rollback --knexfile knexfile.ts`<br /><br />
+`npm run knex -- migrate:rollback --knexfile knexfile.ts`<br />
+
+Install Zod<br />
+`npm i zod`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
