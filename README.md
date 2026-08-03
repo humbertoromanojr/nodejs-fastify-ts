@@ -23,11 +23,13 @@ NODE JS + FASTIFY + TYPESCRIPT
 - <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" /> — Node.js® is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts.
   <br /><br />
 
-- [Node JS](https://nodejs.org/en/)
-- [Typescript](https://www.typescriptlang.org/)
-- [Fastify](https://fastify.dev/)
+- [Node JS](https://nodejs.org/en)
+- [Typescript](https://www.typescriptlang.org)
+- [Fastify](https://fastify.dev)
 - [SqLite](https://sqlite.org/docs.html)
-- [Knex](https://knexjs.org/guide/)
+- [Knex](https://knexjs.org/guide)
+- [Dotenv](https://github.com/motdotla/dotenv)
+- [Zod](https://zod.dev)
 
 <div align="center">
   <img src="https://drive.google.com/uc?export=view&id=" alt="" width="100%" border="0" />
@@ -57,7 +59,16 @@ Install Eslint<br />
 `npm i -D eslint`<br />
 
 Install SQLite and Knex<br />
-`npm install knex sqlite3 --legacy-peer-deps`<br /><br />
+`npm install knex sqlite3 --legacy-peer-deps`<br />
+
+Create Migrations<br />
+`npm run knex -- migrate:make create-documents --knexfile knexfile.ts`<br />
+
+Run Migrations<br />
+`npm run knex -- migrate:latest --knexfile knexfile.ts`<br />
+
+Undo Migrations<br />
+`npm run knex -- migrate:rollback --knexfile knexfile.ts`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
