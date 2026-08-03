@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://drive.google.com/uc?export=view&id=108wZswANlNm0X2WKjVdVLMgNvcxlNjzr" alt="" width="100%" border="0" />
+  <img src="https://drive.google.com/uc?export=view&id=1YAZgeInJrA66qmqvw_WXtSM6ZVuh0FrE" alt="" width="100%" border="0" />
 <br>
 
 # NODE JS + FASTIFY + TYPESCRIPT
@@ -42,7 +42,7 @@
 
 > BR: Business Rules ⛑️
 
-- [x] A transaction can be a credit transaction that adds to the total amount, or a debit transaction that subtracts from it;
+- [x] A transaction can be a credit, which increases the total amount, or a debit, which decreases it;
 - [] It must be possible to identify the user across requests;
 - [] The user can only view transactions that they have created;
 
