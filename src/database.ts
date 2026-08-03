@@ -1,14 +1,17 @@
-import knex from "knex";
+import knex, { type Knex } from "knex";
 import path from "path";
 import { fileURLToPath } from "url";
+
+import { env } from "./env/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export const config = {
+export const config: Knex.Config = {
   client: "sqlite",
   connection: {
-    filename: path.resolve(__dirname, "..", "tmp", "app.db"),
+    //filename: path.resolve(__dirname, "..", "db", "app.db"),
+    filename: env.DATABASE_URL,
   },
   useNullAsDefault: true,
   pool: {
@@ -17,7 +20,7 @@ export const config = {
     },
   },
   migrations: {
-    directory: path.resolve(__dirname, "..", "migrations"),
+    directory: path.resolve(__dirname, "..", "db", "migrations"),
     extension: "ts",
   },
 };
