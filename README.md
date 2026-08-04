@@ -71,6 +71,7 @@ Setting Up TypeScript<br />
 
 Install Fastify<br />
 `npm i fastify`<br />
+`npm i @fastify/cookie`<br />
 
 Install Eslint<br />
 `npm i -D eslint`<br />
