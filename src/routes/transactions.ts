@@ -3,16 +3,25 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 
 import { db as knex } from "../database.js";
+import { checkSessionIdExists } from "../middlewares/check-session-id-exists.js";
 
 export async function transactionsRoutes(app: FastifyInstance) {
-  app.get("/", async () => {
-    // list all transactions
-    const transactions = await knex("transactions").select();
+  app.get(
+    "/",
+    { preHandler: [checkSessionIdExists] },
+    async (request, replay) => {
+      // list all transactions
+      const { sessionId } = request.cookies;
 
-    return { transactions };
-  });
+      const transactions = await knex("transactions")
+        .where("session_id", sessionId)
+        .select();
 
-  app.get("/:id", async (request) => {
+      return { transactions };
+    },
+  );
+
+  app.get("/:id", { preHandler: [checkSessionIdExists] }, async (request) => {
     // get a transaction by id
     const getTransactionParamsSchema = z.object({
       id: z.string().uuid(),
@@ -20,47 +29,62 @@ export async function transactionsRoutes(app: FastifyInstance) {
 
     const { id } = getTransactionParamsSchema.parse(request.params);
 
-    const transaction = await knex("transactions").where("id", id).first();
+    const { sessionId } = request.cookies;
+
+    const transaction = await knex("transactions")
+      .where({ id: id, session_id: sessionId })
+      .first();
 
     return { transaction };
   });
 
-  app.get("/summary", async () => {
-    // get a summary of all transactions
-    const summary = await knex("transactions")
-      .sum("amount", { as: "amount" })
-      .first();
-    return { summary };
-  });
+  app.get(
+    "/summary",
+    { preHandler: [checkSessionIdExists] },
+    async (request) => {
+      // get a summary of all transactions
+      const { sessionId } = request.cookies;
 
-  app.post("/", async (request, replay) => {
-    const createTransactionBodySchema = z.object({
-      title: z.string(),
-      amount: z.number(),
-      type: z.enum(["credit", "debit"]),
-    });
+      const summary = await knex("transactions")
+        .where("session_id", sessionId)
+        .sum("amount", { as: "amount" })
+        .first();
+      return { summary };
+    },
+  );
 
-    const { title, amount, type } = createTransactionBodySchema.parse(
-      request.body,
-    );
-
-    let sessionId = request.cookies.sessionId;
-    if (!sessionId) {
-      sessionId = randomUUID();
-
-      replay.setCookie("sessionId", sessionId, {
-        path: "/",
-        maxAge: 60 * 60 * 24 * 2, // 2 days
+  app.post(
+    "/",
+    { preHandler: [checkSessionIdExists] },
+    async (request, replay) => {
+      const createTransactionBodySchema = z.object({
+        title: z.string(),
+        amount: z.number(),
+        type: z.enum(["credit", "debit"]),
       });
-    }
 
-    await knex("transactions").insert({
-      id: randomUUID(),
-      title,
-      amount: type === "credit" ? amount : -amount,
-      session_id: sessionId,
-    });
+      const { title, amount, type } = createTransactionBodySchema.parse(
+        request.body,
+      );
 
-    return replay.status(201).send();
-  });
+      let sessionId = request.cookies.sessionId;
+      if (!sessionId) {
+        sessionId = randomUUID();
+
+        replay.setCookie("sessionId", sessionId, {
+          path: "/",
+          maxAge: 60 * 60 * 24 * 2, // 2 days
+        });
+      }
+
+      await knex("transactions").insert({
+        id: randomUUID(),
+        title,
+        amount: type === "credit" ? amount : -amount,
+        session_id: sessionId,
+      });
+
+      return replay.status(201).send();
+    },
+  );
 }
