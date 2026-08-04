@@ -44,10 +44,21 @@ export async function transactionsRoutes(app: FastifyInstance) {
       request.body,
     );
 
+    let sessionId = request.cookies.sessionId;
+    if (!sessionId) {
+      sessionId = randomUUID();
+
+      replay.setCookie("sessionId", sessionId, {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 2, // 2 days
+      });
+    }
+
     await knex("transactions").insert({
       id: randomUUID(),
       title,
       amount: type === "credit" ? amount : -amount,
+      session_id: sessionId,
     });
 
     return replay.status(201).send();
