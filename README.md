@@ -30,6 +30,7 @@
 - [Knex](https://knexjs.org/guide)
 - [Dotenv](https://github.com/motdotla/dotenv)
 - [Zod](https://zod.dev)
+- [Vitest](https://vitest.dev/)
 
 ## Backend Development Process: 🎖️
 
@@ -89,7 +90,14 @@ Undo Migrations<br />
 `npm run knex -- migrate:rollback --knexfile knexfile.ts`<br />
 
 Install Zod<br />
-`npm i zod`<br /><br />
+`npm i zod`<br />
+
+Install Vitest<br />
+`npm i vitest -D`<br />
+
+Install Supertest<br />
+`npm i supertest -D`<br />
+`npm i @types/supertest -D`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
