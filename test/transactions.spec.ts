@@ -1,11 +1,26 @@
-import { expect, test, beforeAll, afterAll, describe, it } from "vitest";
+import { expect, test, beforeAll, afterAll, describe, it, beforeEach } from "vitest";
 import supertest from "supertest";
+import { execSync } from "node:child_process";
+
 import { app } from "../src/app.js";
 
 describe("Transactions routes", () => {
   beforeAll(async () => {
     await app.ready();
   });
+
+  /*
+  Reset the database to set up the test environment
+  */
+ beforeEach(async () => {
+  // clear database
+  execSync("npm run knex migrate:rollback --all");
+
+  // create again the database
+  execSync("npm run knex migrate:latest");
+ })
+
+
 
   afterAll(async () => {
     await app.close();
