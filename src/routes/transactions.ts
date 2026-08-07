@@ -87,4 +87,35 @@ export async function transactionsRoutes(app: FastifyInstance) {
       return replay.status(201).send();
     },
   );
+
+    app.delete("/:id", { preHandler: [checkSessionIdExists] }, async (request, reply) => {
+    // get a transaction by id
+    const getTransactionParamsSchema = z.object({
+      id: z.string().uuid(),
+    });
+
+    const { id } = getTransactionParamsSchema.parse(request.params);
+
+    const { sessionId } = request.cookies;
+
+    const transaction = await knex("transactions")
+      .where({ id: id, session_id: sessionId })
+      .first();
+
+      if (!transaction) {
+        return reply.status(404).send({ 
+          error: "Transaction not found" 
+        });
+      }
+
+      await knex("transactions")
+        .where({ id })
+        .delete();
+
+    return reply.status(200).send({ 
+      message: "Transaction deleted successfully",
+      transaction // opcional: retorna o que foi deletado
+    });
+  });
 }
+
