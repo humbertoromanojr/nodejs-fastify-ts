@@ -11,7 +11,7 @@ describe("Transactions routes", () => {
 
   /*
   Reset the database to set up the test environment
-  */
+  
  beforeEach(async () => {
   // clear database
   execSync("npm run knex migrate:rollback --all");
@@ -19,7 +19,7 @@ describe("Transactions routes", () => {
   // create again the database
   execSync("npm run knex migrate:latest");
  })
-
+  */
 
 
   afterAll(async () => {
@@ -93,6 +93,37 @@ describe("Transactions routes", () => {
           amount: 1300,
         }),
       ]);
+    });
+
+  it("should be able to get to Summary", async () => {
+    const createTransactionResponse = await supertest(app.server)
+      .post("/transactions")
+      .set("Cookie", "sessionId=test-session-id")
+      .send({
+        title: "Credit transaction",
+        amount: 1300,
+        type: "credit",
+      })
+
+      const cookies = createTransactionResponse.get("Set-Cookie")
+
+      await supertest(app.server)
+      .post("/transactions")
+      .set("Cookie", "sessionId=test-session-id")
+      .send({
+        title: "Debit transaction",
+        amount: 500,
+        type: "debit",
+      })
+
+      const summaryResponse = await supertest(app.server)
+        .get("/transaction/summary")
+        .set("Cookie", "sessionId=test-session-id")
+        .expect(200)
+
+      expect(summaryResponse.body.summary).toEqual({
+        amount: 800,
+      });
     });
   
 });
