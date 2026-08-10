@@ -6,7 +6,7 @@
 
 </h1>
 
-> Status from Project: <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" /> Under Construction <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" />
+> Status from Project: <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" /> F I N I S H E D <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" />
 
 ## Shields
 
@@ -44,8 +44,8 @@
 > BR: Business Rules ⛑️
 
 - [x] A transaction can be a credit, which increases the total amount, or a debit, which decreases it;
-- [] It must be possible to identify the user across requests;
-- [] The user can only view transactions that they have created;
+- [x] It must be possible to identify the user across requests;
+- [x] The user can only view transactions that they have created;
 
 > NFR: Non-Functional Requirements
 
